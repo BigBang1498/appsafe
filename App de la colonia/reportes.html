@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reportes.css">
+  <title>Reportar Incidencias</title>
+</head>
+<body>
+  <header>
+    <h1>Reportar Incidencias</h1>
+  </header>
+  <main>
+    <section id="reportes">
+      <h2>Formulario de Incidencia</h2>
+      <form id="formReporte">
+        <label for="tipoIncidencia">Tipo de Incidencia:</label>
+        <select id="tipoIncidencia" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="robo">Robo</option>
+          <option value="asalto">Asalto</option>
+          <option value="choque">Choque</option>
+          <option value="accidente">Accidente</option>
+          <option value="otro">Otro</option>
+        </select>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" placeholder="Describe lo sucedido..." required></textarea>
+
+        <label for="ubicacion">Ubicación:</label>
+        <input type="text" id="ubicacion" placeholder="Ingresa la ubicación (opcional)">
+
+        <button type="submit">Enviar Reporte</button>
+      </form>
+      <div id="confirmacion"></div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 App de Seguridad - Reportes</p>
+  </footer>
+  <script src="reportes.js"></script>
+</body>
+</html>

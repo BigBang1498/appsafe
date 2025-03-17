@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="mapa.css">
+  <title>Mapa Interactivo de Incidencias</title>
+</head>
+<body>
+  <header>
+    <h1>Mapa Interactivo de Incidencias</h1>
+  </header>
+  <main>
+    <div class="controls">
+      <label for="tipoIncidencia">Selecciona el tipo de incidencia:</label>
+      <select id="tipoIncidencia">
+        <option value="robo">Robo</option>
+        <option value="asalto">Asalto</option>
+        <option value="choque">Choque</option>
+        <option value="accidente">Accidente</option>
+      </select>
+      <button onclick="filtrarIncidencias()">Aplicar Filtro</button>
+    </div>
+    <div id="map"></div>
+  </main>
+  <footer>
+    <p>&copy; 2025 App de Seguridad</p>
+  </footer>
+  <!-- Aquí está el script para Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Script para la funcionalidad del mapa -->
+  <script src="mapa.js"></script>
+</body>
+</html>
