@@ -55,35 +55,43 @@ const guadalajaraPolygon = L.polygon(guadalajaraPolygonCoords, {
 }).addTo(map);
 guadalajaraPolygon.bindPopup("Zona delimitada de Guadalajara");
 
-// Datos de incidencias simuladas
-const incidencias = [
-  { tipo: 'robo', coordenadas: [20.679, -103.355] },
-  { tipo: 'robo', coordenadas: [20.670, -103.360] },
-  { tipo: 'asalto', coordenadas: [20.665, -103.340] },
-  { tipo: 'choque', coordenadas: [20.672, -103.350] },
-  { tipo: 'accidente', coordenadas: [20.675, -103.365] },
-  { tipo: 'choque', coordenadas: [20.680, -103.375] },
-  { tipo: 'asalto', coordenadas: [20.673, -103.380] },
-  { tipo: 'robo', coordenadas: [20.678, -103.385] },
-  { tipo: 'accidente', coordenadas: [20.671, -103.390] }
-];
+function obtenerCoordenadasAleatorias() {
+  const latMin = 20.6368; // Límite inferior de latitud
+  const latMax = 20.7474; // Límite superior de latitud
+  const lonMin = -103.4001; // Límite izquierdo de longitud
+  const lonMax = -103.2893; // Límite derecho de longitud
+
+  const latitud = Math.random() * (latMax - latMin) + latMin;
+  const longitud = Math.random() * (lonMax - lonMin) + lonMin;
+
+  return [latitud, longitud];
+}
+
 
 // Filtrar y mostrar incidencias
-function filtrarIncidencias() {
+async function filtrarIncidencias() {
   const tipoSeleccionado = document.getElementById('tipoIncidencia').value;
 
-  // Remover pines existentes
+  // Obtener los reportes desde la base de datos con `fetch()`
+  const respuesta = await fetch(`http://localhost/appsafe/App%20de%20la%20colonia/obtener_reportes.php?tipo=${tipoSeleccionado}`);
+  const reportes = await respuesta.json();
+
+  // Remover pines existentes antes de agregar nuevos
   map.eachLayer(layer => {
     if (layer instanceof L.Marker) {
       map.removeLayer(layer);
     }
   });
 
-  // Agregar los pines filtrados
-  incidencias
-    .filter(incidencia => incidencia.tipo === tipoSeleccionado)
-    .forEach(incidencia => {
-      const marker = L.marker(incidencia.coordenadas).addTo(map);
+  // Verificar si hay reportes en la base de datos
+  if (reportes.length > 0) {
+    reportes.forEach(() => {
+      const coordenadasAleatorias = obtenerCoordenadasAleatorias();
+      const marker = L.marker(coordenadasAleatorias).addTo(map);
       marker.bindPopup(`Incidencia: ${tipoSeleccionado}`);
     });
+  } else {
+    alert("No hay reportes registrados para esta incidencia.");
+  }
 }
+
