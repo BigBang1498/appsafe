@@ -94,4 +94,3 @@ async function filtrarIncidencias() {
     alert("No hay reportes registrados para esta incidencia.");
   }
 }
-
