@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Control</title>
+  <link rel="stylesheet" href="panel.css"> <!-- Archivo de estilos -->
+</head>
+<body>
+  <header>
+    <h1>Panel de Control</h1>
+    <nav>
+      <ul>
+        <li><a href="#usuarios">Usuarios</a></li>
+        <li><a href="#reportes">Reportes</a></li>
+        <li><a href="login.php">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <!-- Sección de Usuarios -->
+    <section id="usuarios">
+      <h2>Usuarios Registrados</h2>
+      <div id="usuarios-container"></div>
+    </section>
+    
+    <!-- Sección de Reportes -->
+    <section id="reportes">
+      <h2>Reportes Registrados</h2>
+      <table id="reportes-table">
+        <thead>
+          <tr>
+            <th>Tipo de Reporte</th>
+            <th>Ubicación</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </section>
+    
+  </main>
+  <footer>
+    <p>&copy; 2025 App de Seguridad</p>
+  </footer>
+  <script src="panel.js"></script>
+</body>
+</html>
