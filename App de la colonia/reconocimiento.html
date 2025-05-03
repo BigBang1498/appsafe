@@ -16,8 +16,11 @@
       <h2>Reconocimiento Facial</h2>
       <div class="video-container">
         <video id="inputVideo" autoplay muted playsinline></video>
+        <canvas id="photoCanvas" style="display: none;"></canvas> <!-- Canvas para capturas -->
       </div>
-      <button id="addCameraButton">+ Agregar otra cámara</button>
+      <button id="captureButton"> Capturar Foto</button>
+      <button id="startRecordingButton">Iniciar Grabación</button>
+      <button id="stopRecordingButton" style="display: none;"> Detener Grabación</button>
     </section>
   </main>
   <footer>
