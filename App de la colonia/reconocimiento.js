@@ -15,24 +15,48 @@ async function loadAllModels() {
   }
 }
 
-// Iniciar video desde la cámara
+// Iniciar video desde la cámara y activar monitoreo
 async function startVideo() {
   const video = document.getElementById('inputVideo');
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     video.srcObject = stream;
-    console.log('Cámara iniciada correctamente');
+    console.log('✅ Cámara iniciada correctamente');
 
-    setTimeout(() => {
-      document.getElementById('captureButton').addEventListener('click', capturePhoto);
-      document.getElementById('startRecordingButton').addEventListener('click', startRecording);
-      document.getElementById('stopRecordingButton').addEventListener('click', stopRecording);
-    }, 500);
-
+    // Activar el sistema de diagnóstico
+    monitorCamera();
   } catch (error) {
-    console.error('Error al acceder a la cámara:', error.message);
-    alert("Permiso de cámara denegado. Verifica que la app tiene permisos.");
+    console.error('⚠️ Error al acceder a la cámara:', error.message);
+    alert("⚠️ Problema detectado: Permiso de cámara denegado. Verifica los ajustes.");
   }
+}
+
+// Monitoreo en tiempo real para detectar fallos en la cámara
+function monitorCamera() {
+  const video = document.getElementById('inputVideo');
+
+  setInterval(() => {
+    if (!video.srcObject || video.readyState < 2) {
+      console.error("⚠️ Error: La cámara dejó de responder.");
+      mostrarNotificacion("⚠️ Problema detectado: La cámara ha dejado de funcionar correctamente.");
+    }
+  }, 5000); // Verificación cada 5 segundos
+}
+
+// Función para mostrar notificaciones emergentes de fallos
+function mostrarNotificacion(mensaje) {
+  const notificacion = document.createElement('div');
+  notificacion.textContent = mensaje;
+  notificacion.style.position = "fixed";
+  notificacion.style.bottom = "10px";
+  notificacion.style.right = "10px";
+  notificacion.style.background = "#d9534f";
+  notificacion.style.color = "white";
+  notificacion.style.padding = "10px";
+  notificacion.style.borderRadius = "5px";
+
+  document.body.appendChild(notificacion);
+  setTimeout(() => document.body.removeChild(notificacion), 5000);
 }
 
 // Detección facial en tiempo real
@@ -69,7 +93,7 @@ async function detectFaces() {
   });
 }
 
-// Captura de imagen y guardado en la base de datos
+// Captura de imagen y envío
 function capturePhoto() {
   const video = document.getElementById('inputVideo');
   const canvas = document.getElementById('photoCanvas');
@@ -91,7 +115,7 @@ function capturePhoto() {
     if (data.error) {
       console.error("Error:", data.error);
     } else {
-      console.log('Imagen guardada:', data.message);
+      console.log('✅ Imagen guardada:', data.message);
     }
   })
   .catch(error => console.error('Error al guardar la imagen:', error));
@@ -105,8 +129,8 @@ function startRecording() {
   const video = document.getElementById('inputVideo');
   
   if (!video.srcObject) {
-    console.error("Error: No hay una fuente de video disponible.");
-    alert("La cámara no está activa. Verifica los permisos.");
+    console.error("⚠️ Error: No hay una fuente de video disponible.");
+    alert("⚠️ La cámara no está activa. Verifica los permisos.");
     return;
   }
 
@@ -127,18 +151,12 @@ function startRecording() {
       body: formData
     })
     .then(response => response.json())
-    .then(data => console.log('Video guardado:', data))
+    .then(data => console.log('✅ Video guardado:', data))
     .catch(error => console.error('Error al guardar el video:', error));
   };
 
   mediaRecorder.start();
   document.getElementById('stopRecordingButton').style.display = 'inline-block';
-
-  setTimeout(() => {
-    document.getElementById('captureButton').addEventListener('click', capturePhoto);
-    document.getElementById('startRecordingButton').addEventListener('click', startRecording);
-    document.getElementById('stopRecordingButton').addEventListener('click', stopRecording);
-  }, 500);
 }
 
 function stopRecording() {
@@ -146,7 +164,7 @@ function stopRecording() {
     mediaRecorder.stop();
     document.getElementById('stopRecordingButton').style.display = 'none';
   } else {
-    console.error("Error: MediaRecorder no está inicializado.");
+    console.error("⚠️ Error: MediaRecorder no está inicializado.");
   }
 }
 
