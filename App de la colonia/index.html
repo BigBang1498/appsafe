@@ -9,7 +9,16 @@
 <body>
   <header>
     <h1>App de Seguridad</h1>
+    <div id="notificaciones-container">
+      <button id="notificaciones-button">
+        🔔 <span id="notificaciones-count">0</span>
+      </button>
+      <div id="notificaciones-menu" class="hidden">
+        <ul id="notificaciones-list"></ul>
+      </div>
+    </div>
   </header>
+  
   <main>
     <section id="menu">
       <h2>Menú de Opciones</h2>
@@ -18,11 +27,14 @@
         <a href="mapa.html" class="menu-item">Mapa Interactivo</a>
         <a href="reconocimiento.html" class="menu-item">Cámaras de Seguridad</a>
         <a href="panel.html" class="menu-item">Panel de control</a>
+        <a href="estadisticas.html" class="menu-item">Estadísticas</a>
+        <a href="alertas.html" class="menu-item">Enviar alerta</a>
       </div>
     </section>
   </main>
   <footer>
     <p>&copy; 2025 App de Seguridad</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
