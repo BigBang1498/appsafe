@@ -1,33 +1,34 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Sistema de Cámaras de Seguridad</title>
-</head>
-<body>
-  <header>
-    <h1>Sistema de Cámaras de Seguridad</h1>
-    <p class="camera-info">Cámara de seguridad: Entrada Principal</p>
-  </header>
-  <main>
-    <section id="reconocimiento">
-      <h2>Reconocimiento Facial</h2>
-      <div class="video-container">
-        <video id="inputVideo" autoplay muted playsinline></video>
-        <canvas id="photoCanvas" style="display: none;"></canvas> <!-- Canvas para capturas -->
-      </div>
-      <button id="captureButton"> Capturar Foto</button>
-      <button id="startRecordingButton">Iniciar Grabación</button>
-      <button id="stopRecordingButton" style="display: none;"> Detener Grabación</button>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Sistema de Seguridad</p>
-  </footer>
-  <!-- Scripts -->
-  <script src="face-api/dist/face-api.js"></script>
-  <script src="reconocimiento.js"></script>
-</body>
-</html>
+  <!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sistema de Cámaras de Seguridad</title>
+  </head>
+  <body>
+    <header>
+      <h1>Sistema de Cámaras de Seguridad</h1>
+      <p class="camera-info">Cámara de seguridad: Entrada Principal</p>
+    </header>
+    <main>
+      <section id="reconocimiento">
+        <h2>Reconocimiento Facial</h2>
+        <div class="video-container">
+          <video id="inputVideo" autoplay muted playsinline></video>
+          <canvas id="photoCanvas" style="display: none;"></canvas> <!-- Canvas para capturas -->
+        </div>
+        <button id="captureButton"> Capturar Foto</button>
+        <button id="startRecordingButton">Iniciar Grabación</button>
+        <button id="stopRecordingButton" style="display: none;"> Detener Grabación</button>
+        <button id="diagnosticoButton">📡 Verificar Estado de la Cámara</button>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2025 Sistema de Seguridad</p>
+    </footer>
+    <!-- Scripts -->
+    <script src="face-api/dist/face-api.js"></script>
+    <script src="reconocimiento.js"></script>
+  </body>
+  </html>
