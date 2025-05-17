@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Reportes</title>
+    <link rel="stylesheet" href="reportes2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📌 Reportes de Incidencias</h1>
+        <label for="categoria">Filtrar por tipo de incidente:</label>
+        <select id="categoria">
+            <option value="todos">Todos</option>
+            <option value="robo">🚨 Robo</option>
+            <option value="violencia">⚠️ Violencia</option>
+            <option value="accidente">🚑 Accidente</option>
+            <option value="medica">🏥 Emergencia Médica</option>
+        </select>
+
+        <button id="filtrar-btn">🔎 Filtrar Reportes</button>
+
+        <h2>🔍 Reportes disponibles</h2>
+        <ul id="listaReportes"></ul>
+    </div>
+
+    <script src="reportes2.js"></script>
+</body>
+</html>
