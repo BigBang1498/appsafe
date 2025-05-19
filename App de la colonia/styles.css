@@ -1,66 +1,19 @@
-/* Estilo general */
+/* Estilos generales */
 body {
   display: flex;
-  flex-direction: column; /* Asegura que el contenido esté en una columna */
-  min-height: 100vh; /* El cuerpo ocupará al menos toda la altura de la ventana */
-  margin: 0; /* Elimina márgenes predeterminados */
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
 }
 
 main {
-  flex: 1; /* Hace que el contenido principal ocupe el espacio disponible */
+  flex: 1;
 }
 
-/* Estilo para el footer */
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 1rem 0;
-}
-
-/* Botones del menú cuadriculado */
-.grid-menu {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Define una cuadrícula flexible */
-  gap: 1rem; /* Espaciado entre botones */
-  justify-content: center; /* Centra los elementos horizontalmente */
-  padding: 1rem;
-}
-
-.menu-item {
-  background-color: #4CAF50;
-  color: white;
-  text-align: center;
-  padding: 1.5rem; /* Ajusta el tamaño interno del botón */
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none; /* Elimina el subrayado predeterminado de los enlaces */
-}
-
-.menu-item:hover {
-  background-color: #45a049; /* Cambia a un tono más claro al pasar el mouse */
-  transform: translateY(-5px); /* Levanta el botón visualmente */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Agrega un efecto de sombra */
-}
-
-.menu-item:active {
-  transform: translateY(2px); /* Simula un efecto de "presión" */
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-
-
-/* Estilo general */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
+/* Estilos del header y footer */
 header, footer {
   background-color: #333;
   color: #fff;
@@ -71,52 +24,88 @@ header h1, footer p {
   margin: 0;
 }
 
-.camera-info {
-  font-size: 1.2rem;
-  margin: 0.5rem 0;
+/* Menú de Opciones con distribución en filas de tres */
+.grid-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
-/* Contenedor del reconocimiento facial */
-#reconocimiento {
-  margin: 2rem auto;
-  padding: 1rem;
-  background-color: #fff;
+.menu-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.menu-item {
+  flex: 1;
+  max-width: 200px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: inline-block;
-  position: relative; /* Asegura que los elementos internos se posicionen correctamente */
-}
-
-.video-container {
-  position: relative;
-  width: 720px;
-  height: 560px;
-}
-
-video, canvas {
-  position: absolute; /* Superpone el canvas al vídeo */
-  top: 0;
-  left: 0;
-  width: 100%; /* Asegura que el canvas cubra el vídeo por completo */
-  height: 100%;
-  border-radius: 10px;
-  border: 2px solid #333;
-}
-
-/* Botón de agregar cámara */
-button {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
 }
 
-button:hover {
-  background-color: #0056b3;
+.menu-item:hover {
+  background-color: #45a049;
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item:active {
+  transform: translateY(2px);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de Pánico por Voz */
+#boton-panico {
+  background-color: #ffdddd;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0px 4px 8px rgba(255, 0, 0, 0.4);
+}
+
+#activarMicrofono {
+  background-color: #D32F2F;
+  color: white;
+  font-size: 18px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#activarMicrofono:hover {
+  background-color: #B71C1C;
+  transform: scale(1.1);
+}
+
+/* Animación de alerta visual */
+#mensajeAlerta {
+  display: none;
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+  animation: parpadeo 1s infinite alternate;
+}
+
+@keyframes parpadeo {
+  0% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* Notificaciones */
+#notificaciones-container {
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
