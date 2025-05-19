@@ -23,19 +23,38 @@
     <section id="menu">
       <h2>Menú de Opciones</h2>
       <div class="grid-menu">
-        <a href="reportes.html" class="menu-item">Reportar Incidencias</a>
-        <a href="mapa.html" class="menu-item">Mapa Interactivo</a>
-        <a href="reconocimiento.html" class="menu-item">Cámaras de Seguridad</a>
-        <a href="panel.html" class="menu-item">Panel de control</a>
-        <a href="estadisticas.html" class="menu-item">Estadísticas</a>
-        <a href="alertas.html" class="menu-item">Enviar alerta</a>
-        <a href="foro.html" class="menu-item">Foro comunitario</a>
+        <div class="menu-row">
+          <a href="reportes.html" class="menu-item">Reportar Incidencias</a>
+          <a href="mapa.html" class="menu-item">Mapa Interactivo</a>
+          <a href="reconocimiento.html" class="menu-item">Cámaras de Seguridad</a>
+        </div>
+        <div class="menu-row">
+          <a href="panel.html" class="menu-item">Panel de control</a>
+          <a href="estadisticas.html" class="menu-item">Estadísticas</a>
+          <a href="alertas.html" class="menu-item">Enviar alerta</a>
+        </div>
+        <div class="menu-row">
+          <a href="foro.html" class="menu-item">Foro comunitario</a>
+        </div>
       </div>
     </section>
+
+    <section id="boton-panico">
+      <h2>Botón de Pánico por Voz</h2>
+      <p>Presiona el botón y di una frase de emergencia para activar la alerta.</p>
+      <button id="activarMicrofono">🎤 Activar Micrófono</button>
+      <p id="mensajeAlerta" class="oculto">⚠️ ¡Alerta enviada a contactos de emergencia!</p>
+
+      <h3>🔹 Personaliza tu palabra clave</h3>
+      <input type="text" id="nuevaPalabra" placeholder="Escribe tu palabra clave...">
+      <button id="guardarPalabraClave">Guardar Palabra Clave</button>
+    </section>
   </main>
+
   <footer>
     <p>&copy; 2025 App de Seguridad</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
